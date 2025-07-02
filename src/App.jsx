@@ -1,11 +1,50 @@
 import {Button} from "./components/ui/button";
 import React from "react"
+import { createBrowserRouter,RouterProvider } from "react-router-dom";
+import AppLayout from "./layout/App-layout";
+import LandingPage from "./pages/Landing";
+import Dashboard from "./pages/Dashboard";
+import Link from "./pages/Link";
+import Auth from "./pages/Auth";
+import RedirectLink from "./pages/RedirectLink";
+
+
+
+
+
+
+const router = createBrowserRouter([
+  {
+    element:<AppLayout/>,
+    children:[
+      {
+        path:'/',
+        element:<LandingPage/>
+      },
+      {
+        path:'/dashboard',
+        element:<Dashboard/>
+      },
+      {
+        path:'/auth',
+        element:<Auth/>
+      },
+      {
+        path:'/link/:id',
+        element:<Link/>
+      },
+      {
+        path:'/:id',
+        element:<RedirectLink/>
+      },
+    ]
+  }
+])
 function App() {
 
   return (
     <>
-      <div className="text-3xl font-bold underline">Harsh</div>
-      <Button variant="outline" className="cursor-pointer">Hi</Button>
+      <RouterProvider router={router}/>
     </>
   )
 }
