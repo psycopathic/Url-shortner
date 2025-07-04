@@ -25,3 +25,23 @@ export async function logout() {
   const {error} = await supabase.auth.signOut();
   if (error) throw new Error(error.message);
 }
+
+export async function signup({name,email,password,profilepics}){
+  const fileName = `dp-${name.split(" ").join("-")}-${Math.random()}`;
+  const {error:storageError} = await supabase.storage
+    .from("profilepics")
+    .upload(fileName, profilepics);
+  if(storageError)throw new Error(storageError.message);
+  const {data: user, error} = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        name,
+        profilepics: fileName,
+      },
+    },
+  });
+  if(error)throw new Error(error.message);
+  return user;
+}
