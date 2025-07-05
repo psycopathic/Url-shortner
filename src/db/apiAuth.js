@@ -21,10 +21,6 @@ export async function getCurrentUser() {
   return session.session?.user;
 }
 
-export async function logout() {
-  const {error} = await supabase.auth.signOut();
-  if (error) throw new Error(error.message);
-}
 
 export async function signup({name,email,password,profilepics}){
   const fileName = `dp-${name.split(" ").join("-")}-${Math.random()}`;
@@ -44,4 +40,9 @@ export async function signup({name,email,password,profilepics}){
   });
   if(error)throw new Error(error.message);
   return user;
+}
+
+export async function logout(){
+  const {error} = await supabase.auth.signOut();
+  if(error)throw new Error(error.message);
 }
