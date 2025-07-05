@@ -3,8 +3,8 @@ import { useSearchParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
-import { url } from "inspector";
-import { UrlState } from "../Context";
+// import { url } from "inspector";
+import {UrlState}  from "../Context";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const Auth = () => {
@@ -12,7 +12,7 @@ const Auth = () => {
   const longLink = searchParams.get('createNew');
   const navigate = useNavigate();
 
-  const [isAuthenticate, loading] = UrlState();
+  const {isAuthenticate, loading} = UrlState();
 
   useEffect(()=>{
     if(isAuthenticate && !loading){
