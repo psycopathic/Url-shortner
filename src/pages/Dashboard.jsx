@@ -6,7 +6,7 @@ import {Filter} from "lucide-react";
 
 import {Card, CardContent, CardHeader, CardTitle} from "../components/ui/card";
 import {Input} from "../components/ui/input";
-// import {CreateLink} from "../components/CreateLink.jsx";
+import {CreateLink} from "../components/CreateLink.jsx";
 import LinkCard from "../components/LinkCard.jsx";
 import Error from "../components/error";
 
@@ -66,7 +66,7 @@ const Dashboard = () => {
       </div>
       <div className="flex justify-between">
         <h1 className="text-4xl font-extrabold">My Links</h1>
-        {/* <CreateLink /> */}
+        <CreateLink />
       </div>
       <div className="relative">
         <Input
